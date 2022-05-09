@@ -1,4 +1,4 @@
-name: Repository Dispatch
+name: repository
 on:
   repository_dispatch:
     types: [my-event]
