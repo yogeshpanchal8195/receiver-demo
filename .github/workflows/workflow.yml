@@ -11,4 +11,7 @@ jobs:
       - name: Pause for 25 seconds
         run: |
           echo "SUCCESS"
+          echo ${{ github.event.client_payload.sha }}
+          echo ${{ github.event.client_payload.ref }}
+          echo ${{ github.event.client_payload.url }}
           sleep 25
