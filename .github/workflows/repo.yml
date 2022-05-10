@@ -21,8 +21,8 @@ jobs:
 
       - name: Repo Checkout
         uses: actions/checkout@v3
-        run: |
-         git checkout $(git show-branch ${{ github.event.client_payload.ref }} &>/dev/null && echo ${{ github.event.client_payload.ref }} || echo develop)
+        # run: |
+        #  git checkout $(git show-branch ${{ github.event.client_payload.ref }} &>/dev/null && echo ${{ github.event.client_payload.ref }} || echo develop)
       - run: echo "SUCCESS FULL MASTER"
       - run: echo ${{ github.event.client_payload.sha }}
       - run: echo ${{ github.event.client_payload.ref }}
