@@ -1,15 +1,15 @@
-name: repository
-on:
-  repository_dispatch:
-    types: [my-event]
-jobs:
-  myEvent:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.client_payload.ref }}
-      - run: echo "SUCCESS FULL MASTER"
-      - run: echo ${{ github.event.client_payload.sha }}
-      - run: echo ${{ github.event.client_payload.ref }}
-      - run: echo ${{ github.event.client_payload.url }}
+# name: repository
+# on:
+#   repository_dispatch:
+#     types: [my-event]
+# jobs:
+#   myEvent:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+#         with:
+#           ref: ${{ github.event.client_payload.ref }}
+#       - run: echo "SUCCESS FULL MASTER"
+#       - run: echo ${{ github.event.client_payload.sha }}
+#       - run: echo ${{ github.event.client_payload.ref }}
+#       - run: echo ${{ github.event.client_payload.url }}
