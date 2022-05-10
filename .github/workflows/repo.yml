@@ -2,14 +2,26 @@ name: repository
 on:
   repository_dispatch:
     types: [my-event]
+
 jobs:
   myEvent:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Determine Branch Name
+        uses: haya14busa/action-cond@v1
+        id: fetchBranch
         with:
-          ref: ${{ github.event.client_payload.ref }}
+          cond: ${{ github.event.client_payload.ref }}
+          if_true: ${{ github.event.client_payload.ref }}
+          if_false: 'develop'
+      - name: Repo Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ steps.fetchBranch.outputs.value }}
+      - run: echo ${{ steps.fetchBranch.outputs.value }}
       - run: echo "SUCCESS FULL FIRST BRANCH"
       - run: echo ${{ github.event.client_payload.sha }}
       - run: echo ${{ github.event.client_payload.ref }}
       - run: echo ${{ github.event.client_payload.url }}
+
+# Find that the checkout of ref branch 
