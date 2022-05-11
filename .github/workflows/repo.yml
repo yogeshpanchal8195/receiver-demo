@@ -1,7 +1,7 @@
 name: repository
 on:
   repository_dispatch:
-    types: [my-event]
+    types: [automate-test]
 
 jobs:
   myEvent:
